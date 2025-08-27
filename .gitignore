@@ -39,3 +39,23 @@ Thumbs.db
 
 # Others
 *.vs/
+
+# Local Terraform files
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.log
+
+# Terraform variable files with sensitive data
+*.tfvars
+*.tfvars.json
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terragrunt cache
+.terragrunt-cache/
