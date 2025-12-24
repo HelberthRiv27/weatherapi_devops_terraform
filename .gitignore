@@ -46,6 +46,7 @@ Thumbs.db
 *.tfstate.*
 crash.log
 *.log
+*.terraform.lock.hcl
 
 # Terraform variable files with sensitive data
 *.tfvars
