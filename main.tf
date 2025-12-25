@@ -22,6 +22,14 @@ terraform {
         }
 }
 
+variable "docker_username" {
+  type = string
+}
+
+variable "docker_password" {
+  type = string
+}
+
 resource "azurerm_resource_group" "example" {
   name     = "example-rg"
   location = "East US"
@@ -47,5 +55,12 @@ resource "azurerm_container_group" "example" {
       protocol = "TCP"
     }
   }
+
+  image_registry_credential {
+    server   = "index.docker.io"
+    username = var.docker_username
+    password = var.docker_password
+  }
+
 }
 

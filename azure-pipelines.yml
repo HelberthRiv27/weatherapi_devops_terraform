@@ -45,10 +45,14 @@ stages:
         set -e
 
         terraform init -input=false
-        terraform apply -input=false -auto-approve 
+        terraform apply -input=false -auto-approve \
+          -var "docker_username=$(DOCKER_USERNAME)" \
+          -var "docker_password=$(DOCKER_PASSWORD)"
       name: 'RunTerraform'
       displayName: 'Run terraform'
       env:
+        DOCKER_USERNAME: $(DOCKER_USERNAME)
+        DOCKER_PASSWORD: $(DOCKER_PASSWORD)
         ARM_CLIENT_ID: $(ARM_CLIENT_ID)
         ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
         ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
