@@ -27,15 +27,15 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
 - stage: Provision
-  displayName: Provision infrastructure
+  displayName: 'Terraform on azure'
   dependsOn: Build
   jobs:
   - job: Provision
-    displayName: Provision Container instance
+    displayName: 'Provision Container instance'
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage: ubuntu-latest
     variables: 
-    - group: 'TerraformServicePrincipalVariables'
+    - group: TerraformServicePrincipalVariables
     steps:
     - script: |
         set -e
