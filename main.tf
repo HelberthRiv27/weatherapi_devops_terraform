@@ -30,6 +30,11 @@ variable "docker_password" {
   type = string
 }
 
+variable "imagebuild" {
+  type = string
+  description = "The Docker image tag to deploy"
+}
+
 resource "azurerm_resource_group" "example" {
   name     = "example-rg"
   location = "East US"
@@ -46,7 +51,7 @@ resource "azurerm_container_group" "example" {
 
   container {
     name   = "weatherapi"
-    image  = "helriper27/weatherapi"
+    image  = "helriper27/weatherapi:${var.imagebuild}"
     cpu    = "0.5"
     memory = "1.5"
 

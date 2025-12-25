@@ -26,6 +26,8 @@ stages:
         repository: 'helriper27/weatherapi'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+        tags: |
+          $(tag)
 - stage: Provision
   displayName: 'Terraform on azure'
   dependsOn: Build
@@ -57,3 +59,4 @@ stages:
         ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
         ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
         ARM_TENANT_ID: $(ARM_TENANT_ID)
+        TF_VAR_imagebuild: $(tag)
